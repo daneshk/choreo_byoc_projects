@@ -13,6 +13,7 @@ RUN adduser \
     --shell "/sbin/nologin" \
     --no-create-home \
     --uid 10014 \
-    "wso2carbon"
+    wso2carbon
+
 # Use the above created unprivileged user
 USER 10014
