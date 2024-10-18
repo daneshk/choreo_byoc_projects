@@ -13,4 +13,4 @@ RUN usermod -u 10001 wso2carbon
 # Ensure the user's home directory and files have the correct ownership
 RUN find / -user 802 -exec chown -h 10001 {} \;
 
-USER wso2carbon
+USER 10001
