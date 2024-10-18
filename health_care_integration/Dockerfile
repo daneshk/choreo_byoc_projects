@@ -10,8 +10,8 @@ FROM daneshk/healthcareintegrationproject:1.0.0
 USER root
 
 # Set the new UID for the new user
-ARG NEW_UID
-ENV NEW_UID=${NEW_UID:-10002}
+ARG NEW_UID 
+ENV NEW_UID=10002
 
 # Create a new user and ensure the group exists
 RUN groupadd -g 10001 wso2mi && \
