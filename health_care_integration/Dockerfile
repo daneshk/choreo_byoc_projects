@@ -6,11 +6,18 @@ FROM daneshk/healthcareintegrationproject:1.0.0
 
 # Create a user with a known UID/GID within range 10000-20000.
 # This is required by Choreo to run the container as a non-root user.
+# Ensure root user before modifying users
+USER root
 
-# Change user ID from 800 to a new value
-RUN usermod -u 10001 wso2carbon
+# Set the new UID for the new user
+ARG NEW_UID
+ENV NEW_UID=${NEW_UID:-10001}
 
-# Ensure the user's home directory and files have the correct ownership
-RUN find / -user 802 -exec chown -h 10001 {} \;
+# Create a new user and ensure the group exists
+RUN groupadd -g 10001 wso2mi && \
+    useradd -u $NEW_UID -g wso2mi wso2mi && \
+    cp -r /home/wso2carbon /home/wso2mi && \
+    chown -R wso2mi:wso2mi /home/wso2mi
 
-USER 10001
+# Switch to the new user
+USER wso2mi
