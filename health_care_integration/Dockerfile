@@ -1,5 +1,8 @@
 FROM daneshk/healthcareintegrationproject:1.0.0
 
+# Ensure root user before modifying users
+USER root
+
 # Set the new UID for the new user (must be between 10000 and 20000)
 ARG NEW_UID
 ENV NEW_UID=10001
