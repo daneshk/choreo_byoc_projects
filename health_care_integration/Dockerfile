@@ -14,4 +14,4 @@ RUN chown -R wso2mi:wso2mi /home/wso2carbon
 # RUN chmod -R 755 /home/wso2carbon  # Set directory permissions as required
 
 # Switch to the new user
-USER wso2mi
+USER $NEW_UID
