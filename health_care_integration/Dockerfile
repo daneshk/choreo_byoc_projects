@@ -7,7 +7,7 @@ FROM daneshk/healthcareintegrationproject:1.0.0
 # Create a user with a known UID/GID within range 10000-20000.
 # This is required by Choreo to run the container as a non-root user.
 # Ensure root user before modifying users
-USER root
+# USER root
 
 # Set the new UID for the new user
 ARG NEW_UID
