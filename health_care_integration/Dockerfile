@@ -9,14 +9,26 @@ FROM daneshk/healthcareintegrationproject:1.0.0
 # Ensure root user before modifying users
 # USER root
 
-# Set the new UID for the new user
-ARG NEW_UID
-ENV NEW_UID=${NEW_UID:-10001}
+ARG USER=wso2carbon
+ARG USER_ID=10001
+ARG USER_GROUP=wso2
+ARG USER_GROUP_ID=10001
+ARG USER_HOME=/home/${USER}
 
-# Create a new user with the specified UID between 10000 and 20000
-RUN useradd -u $NEW_UID -m -s /bin/bash wso2mi && \
-    cp -r /home/wso2carbon /home/wso2mi && \
-    chown -R $NEW_UID:$NEW_UID /home/wso2mi
+# build argument for MOTD
+ARG MOTD='printf "\n\
+ Welcome to WSO2 Docker Resources \n\
+ --------------------------------- \n\
+ This Docker container comprises of a WSO2 product, running with its latest GA release \n\
+ which is under the Apache License, Version 2.0. \n\
+ Read more about Apache License, Version 2.0 here @ http://www.apache.org/licenses/LICENSE-2.0.\n"'
+ENV ENV=${USER_HOME}"/.ashrc"
+
+# create the non-root user and group and set MOTD login message
+RUN \
+    addgroup -S -g ${USER_GROUP_ID} ${USER_GROUP} \
+    && adduser -S -u ${USER_ID} -h ${USER_HOME} -G ${USER_GROUP} ${USER} \
+    && echo ${MOTD} > "${ENV}"
 
 # Explicitly set the USER to the new UID
 USER $NEW_UID
