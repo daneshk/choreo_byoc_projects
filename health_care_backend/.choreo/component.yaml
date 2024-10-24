@@ -5,7 +5,7 @@ schemaVersion: 1.0
 endpoints:
   # +required Unique name for the endpoint.
   # This name will be used when generating the managed API
-  - name: GrandOakEndpoint
+  - name: grand_oak_endpoint
     # +optional Display name for the endpoint.
     displayName: GrandOak Service Endpoint
     # +required Service section has the user service endpoint details
@@ -28,7 +28,7 @@ endpoints:
     # This is only applicable to REST endpoint types.
     # The path should be relative to the docker context.
     # schemaFilePath: openapi.yaml
-  - name: PineValleyEndpoint
+  - name: pine_valley_endpoint
     # +optional Display name for the endpoint.
     displayName: PineValley Service Endpoint
     # +required Service section has the user service endpoint details
