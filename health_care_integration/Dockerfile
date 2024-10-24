@@ -16,11 +16,5 @@ RUN chown -R wso2mi:wso2mi /home/wso2carbon
 # Optionally change permissions (if needed)
 # RUN chmod -R 755 /home/wso2carbon  # Set directory permissions as required
 
-# give the write permission to the /tmp directory
-RUN chown -R wso2mi:wso2mi /tmp/wso2mi
-RUN chown -R wso2mi:wso2mi /tmp
-RUN chown -R wso2mi:wso2mi /tmp/wso2mi/logs
-RUN chown -R wso2mi:wso2mi /tmp/wso2mi/registry
-
 # Switch to the new user
 USER 10001
