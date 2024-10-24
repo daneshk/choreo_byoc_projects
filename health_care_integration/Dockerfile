@@ -1,5 +1,9 @@
 FROM daneshk/healthcareintegrationproject:1.0.0
 
+RUN sed -i 's|doctorinfo:9090/grandOak/doctors|health-care-backend-1668727303:9090|g' ${WSO2_SERVER_HOME}/repository/deployment/server/synapse-configs/default/endpoints/GrandOakEndpoint-1.0.0.xml
+RUN sed -i 's|doctorinfo|health-care-backend-1668727303|g' ${WSO2_SERVER_HOME}/repository/deployment/server/synapse-configs/default/endpoints/PineValleyEndpoint-1.0.0.xml
+# http://health-care-backend-1668727303:9090/
+# http://health-care-backend-1668727303:9091/pineValley/doctors
 # Ensure root user before modifying users
 USER root
 
