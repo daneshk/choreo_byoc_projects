@@ -1,6 +1,4 @@
-FROM openjdk:17-jdk-alpine
-WORKDIR /app
-ADD DoctorInfo.jar app.jar
+FROM daneshk/backend-healthcare-service
 
 USER 10002
 
